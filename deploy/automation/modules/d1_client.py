@@ -93,7 +93,7 @@ def _slugify(video_id: str, title: str = "") -> str:
 
 def insert_article(article: dict, image_urls: list, video: dict) -> str:
     """記事をD1に保存し、生成したslugを返す"""
-    slug = _slugify(video["id"])
+    slug = _slugify(video["id"], article.get("title", ""))
     now = datetime.now(timezone.utc).isoformat()
 
     _execute(
