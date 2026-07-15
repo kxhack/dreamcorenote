@@ -79,9 +79,16 @@ def mark_processed(video_id: str) -> None:
     )
 
 
-def _slugify(video_id: str) -> str:
-    now = datetime.now(timezone.utc).strftime("%Y%m%d")
-    return f"{now}-{video_id}"
+import re
+
+def _slugify(video_id: str, title: str = "") -> str:
+    """記事タイトルを元に読みやすいスラッグを生成する。
+    重複防止のため、末尾に動画IDの下6桁を付与する。"""
+    base = (title or "post").strip()
+    base = re.sub(r"[\s/\\?#&=]+", "-", base)  # 空白・記号をハイフンに置換
+    base = base.strip("-")[:40]  # 長すぎる場合は40文字までに制限
+    suffix = video_id[-6:]
+    return f"{base}-{suffix}" if base else f"post-{suffix}"
 
 
 def insert_article(article: dict, image_urls: list, video: dict) -> str:
