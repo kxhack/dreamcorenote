@@ -1,8 +1,10 @@
 name = "dreamcorenote"
 compatibility_date = "2024-09-01"
+main = "src/index.js"
 
 [assets]
 directory = "./public"
+binding = "ASSETS"
 
 [[d1_databases]]
 binding = "DB"
