@@ -42,7 +42,7 @@ def _download_video(video_id: str) -> dict:
     ydl_opts = {
         "quiet": True,
         "outtmpl": out_template,
-        "format": "mp4/best",
+        "format": "best[vcodec!=none]/bestvideo+bestaudio/mp4",
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(video_url, download=True)
