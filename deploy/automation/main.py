@@ -94,10 +94,10 @@ def main() -> int:
         try:
             process_video(video)
             success += 1
-            except Exception:
+        except Exception:
             failed += 1
             logger.error("動画 %s の処理中にエラーが発生しました:\n%s",
-            video.get("id"), traceback.format_exc())
+                          video.get("id"), traceback.format_exc())
             # 失敗した動画も処理済みとして記録し、無限リトライを防ぐ
             try:
                 d1_client.mark_processed(video["id"])
