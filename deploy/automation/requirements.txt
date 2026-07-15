@@ -1,7 +1,7 @@
 yt-dlp>=2024.8.6
+curl_cffi>=0.7.1
 requests>=2.31.0
 python-dotenv>=1.0.1
 openai>=1.40.0
 anthropic>=0.34.0
 boto3>=1.34.0
-curl_cffi>=0.7.1
